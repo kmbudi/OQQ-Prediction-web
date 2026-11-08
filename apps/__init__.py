@@ -53,34 +53,33 @@ def configure_database(app):
         db.session.remove() 
 
 
+
 def create_app(config):
     app = Flask(__name__)
-     # Your Firebase configuration
+
+    # Firebase configuration - NEW PROJECT
     firebase_config = {
-        "apiKey": "AIzaSyACI4bAOfMJZtPpXyk9SQC51yhyRPssveM",
-        "authDomain": "orequalityquantifier.firebaseapp.com",
-        "databaseURL": "https://orequalityquantifier-default-rtdb.asia-southeast1.firebasedatabase.app",
-        "projectId": "orequalityquantifier",
-        "storageBucket": "orequalityquantifier.appspot.com",
-        "messagingSenderId": "242834658088",
-        "appId": "1:242834658088:web:5343b6223411aa4ebeb61d",
-        "measurementId": "G-KQWH6YV66M"
+        "databaseURL": "https://ore-quality-quantifier-default-rtdb.asia-southeast1.firebasedatabase.app/",
+        "projectId": "ore-quality-quantifier"
     }
 
-    # Initialize Firebase
-    cred = credentials.Certificate("apps/key.json")
-    firebase_admin.initialize_app(cred, {
-        "databaseURL": firebase_config["databaseURL"],
-        "apiKey": firebase_config["apiKey"],
-        "authDomain": firebase_config["authDomain"],
-        "projectId": firebase_config["projectId"],
-        "storageBucket": firebase_config["storageBucket"],
-        "messagingSenderId": firebase_config["messagingSenderId"],
-        "appId": firebase_config["appId"],
-        "measurementId": firebase_config["measurementId"]
-    })
+    # Locate Firebase Service Account key
+    key_path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        "key.json"
+    )
+
+    # Initialize Firebase Admin SDK
+    try:
+        firebase_admin.get_app()
+    except ValueError:
+        cred = credentials.Certificate(key_path)
+        firebase_admin.initialize_app(cred, firebase_config)
+
     app.config.from_object(config)
     register_extensions(app)
     register_blueprints(app)
     configure_database(app)
+
     return app
+
