@@ -1,6 +1,5 @@
 ---
 title: OreQualityQuantifier
-description: PROJECT UJIAN AKHIR SEMESTER 6 MATAKUL MACHINE LEARNING PRODI TSD'20 UNAIR
 tags:
   - python
   - flask
