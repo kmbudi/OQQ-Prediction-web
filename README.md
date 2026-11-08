@@ -24,6 +24,3 @@ Aplikasi ini bekerja dengan melatih model machine learning pada dataset yang men
 
 Untuk menggunakan aplikasi ini, Anda perlu memasukkan data masukan yang relevan, seperti komposisi campuran bijih besi dan parameter-parameter terkait. Setelah itu, aplikasi akan menggunakan model machine learning yang telah dilatih untuk memprediksi konsentrasi silica dalam campuran bijih besi. Hasil prediksi akan ditampilkan kepada pengguna.
 
-
-## Credit
-Website ini dibuat oleh mahasiswa Universitas Airlangga program studi S1 Teknologi Sains Data semester 6 yaitu Rijal Akhdan Khairulah, Nanda Hasudungan Simatupang, dan Komang Budi Anggara.
